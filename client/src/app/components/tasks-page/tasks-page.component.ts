@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { TasksService } from "src/app/services/tasks/tasks.service";
-import { Observable } from "rxjs";
 import { MembersService } from 'src/app/services/members/members.service';
+import { FormBuilder } from '@angular/forms';
+import { TasksService } from 'src/app/services/tasks/tasks.service';
 
 interface Member {
   _id: any;
@@ -17,7 +17,19 @@ export class TasksPageComponent implements OnInit {
 
   public members: Array<Member>;
   
-  constructor(private membersService: MembersService) {}
+  public myForm;
+  
+  constructor(private membersService: MembersService,
+     private formBuilder: FormBuilder,
+     private tasksService: TasksService
+     ) {
+       this.myForm = this.formBuilder.group({
+         member_id: "",
+         task: "",
+         date: "",
+         done: false
+       })
+     }
 
   
   ngOnInit() {
@@ -33,7 +45,23 @@ export class TasksPageComponent implements OnInit {
   
   }
 
-
+  
+  
+  addTask() {
+            
+    const newTask = {
+      member_id: this.myForm.get("member_id").value,
+      task: this.myForm.get("task").value,
+      date: this.myForm.get('date').value,
+      done: this.myForm.get('done').value
+    }
+    
+    this.tasksService.addTask(newTask).subscribe( result => {
+      console.log(result)
+    } 
+    )
+    
+  }
 
 
 }

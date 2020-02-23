@@ -7,14 +7,14 @@ const mongoose = require('mongoose');
 
 
 const getMembers = require('./routes/getMembers');
-
+const addTask = require('./routes/addTask');
 
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/getMembers', getMembers);
-
+app.use('/addTask', addTask);
 
 
 mongoose.connect(process.env.DB_CONNECTION, {
