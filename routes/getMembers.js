@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     try{
         const members = await Member.find();
         if (!members) return res.json({message: "no members found", status: false})
-        res.json({data: members, status: true})  
+        res.json({members: members, status: true})  
     } catch {
         res.json({error: "some error", status: false})
     }

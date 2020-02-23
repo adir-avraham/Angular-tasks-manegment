@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TasksPageComponent } from './components/tasks-page/tasks-page.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { TasksPageComponent } from './components/tasks-page/tasks-page.component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
