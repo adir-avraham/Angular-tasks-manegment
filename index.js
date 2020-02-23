@@ -8,14 +8,14 @@ const mongoose = require('mongoose');
 
 const getMembers = require('./routes/getMembers');
 const addTask = require('./routes/addTask');
-
+const getTasks = require('./routes/getTasks');
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/getMembers', getMembers);
 app.use('/addTask', addTask);
-
+app.use('/getTasks', getTasks);
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,

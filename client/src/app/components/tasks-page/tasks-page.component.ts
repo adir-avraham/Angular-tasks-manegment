@@ -19,6 +19,8 @@ export class TasksPageComponent implements OnInit {
   
   public myForm;
   
+  public tasks: Array<any>;
+
   constructor(private membersService: MembersService,
      private formBuilder: FormBuilder,
      private tasksService: TasksService
@@ -26,7 +28,7 @@ export class TasksPageComponent implements OnInit {
        this.myForm = this.formBuilder.group({
          member_id: "",
          task: "",
-         date: "",
+         date: null,
          done: false
        })
      }
@@ -43,9 +45,16 @@ export class TasksPageComponent implements OnInit {
       console.log("some error")
     });
   
+    this.tasksService.getTasks().subscribe(result => {
+      const { tasks } = result;
+      this.tasks = tasks;
+      console.log(tasks)
+    })
+  
+  
   }
 
-  
+
   
   addTask() {
             
@@ -58,6 +67,9 @@ export class TasksPageComponent implements OnInit {
     
     this.tasksService.addTask(newTask).subscribe( result => {
       console.log(result)
+      if (result) {
+        this.myForm.reset();
+      }
     } 
     )
     

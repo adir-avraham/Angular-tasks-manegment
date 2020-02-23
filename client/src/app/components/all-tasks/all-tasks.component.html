@@ -1,0 +1,13 @@
+<h1>all-tasks works!</h1>
+<div class="row row-cols-1 row-cols-md-3">
+    <div *ngFor="let task of tasks" class="col mb-4">
+      <div class="card">
+        <div class="card-header">{{task.member}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{task.date}}</h5>
+          <p class="card-text">{{task.task}}</p>
+          <p class="card-text" [ngClass]="{'text-success':task.done}" >{{task.done}}</p>
+        </div>
+      </div>
+    </div>  
+</div>
