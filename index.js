@@ -6,16 +6,19 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 
-const getMembers = require('./routes/getMembers');
+const getAllMembers = require('./routes/getAllMembers');
 const addTask = require('./routes/addTask');
 const getTasks = require('./routes/getTasks');
+const getOneMember = require('./routes/getOneMember');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/getMembers', getMembers);
+app.use('/getAllMembers', getAllMembers);
 app.use('/addTask', addTask);
 app.use('/getTasks', getTasks);
+app.use('/getOneMember', getOneMember);
+
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,

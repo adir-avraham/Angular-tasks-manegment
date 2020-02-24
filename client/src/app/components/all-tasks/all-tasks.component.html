@@ -7,6 +7,8 @@
           <h5 class="card-title">{{task.date}}</h5>
           <p class="card-text">{{task.task}}</p>
           <p class="card-text" [ngClass]="{'text-success':task.done}" >{{task.done}}</p>
+          <button class="btn btn-danger btn-sm float-right">X</button>
+          <button class="btn btn-info btn-sm float-left" (click)="getOneMember(task.member)">member page</button>
         </div>
       </div>
     </div>  

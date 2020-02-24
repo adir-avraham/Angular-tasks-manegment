@@ -68,12 +68,17 @@ export class TasksPageComponent implements OnInit {
     this.tasksService.addTask(newTask).subscribe( result => {
       console.log(result)
       if (result) {
+        this.tasksService.getTasks().subscribe(result => {
+          const { tasks } = result;
+          this.tasks = tasks;
+        })
         this.myForm.reset();
       }
     } 
     )
     
   }
+
 
 
 }

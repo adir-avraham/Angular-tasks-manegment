@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class MembersService {
 
-  public getMembersUrl = 'http://localhost:4000/getMembers';
+  public getMembersUrl = 'http://localhost:4000/getAllMembers';
+
+  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -15,4 +17,10 @@ export class MembersService {
   getMembers(): Observable<any> {
     return this.httpClient.get(this.getMembersUrl)
   }
+
+  getOneMember(member: any): Observable<any> {
+    return this.httpClient.get(`http://localhost:4000/getOneMember/${member}`)
+  }
+
+
 }
