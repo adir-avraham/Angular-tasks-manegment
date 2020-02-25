@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks/tasks.service';
 import { MembersService } from 'src/app/services/members/members.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-tasks',
@@ -12,7 +13,8 @@ export class AllTasksComponent implements OnInit {
   public tasks: Array<any>;
 
   constructor(private tasksService: TasksService,
-    private membersService: MembersService) { }
+    private membersService: MembersService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.tasksService.getTasks().subscribe(result => {
@@ -23,8 +25,15 @@ export class AllTasksComponent implements OnInit {
 
   getOneMember(member_id: any) {
     this.membersService.getOneMember(member_id).subscribe(result =>{
-      console.log(result)
+
+      this.router.navigate(['/memberPage', result[0]])
     })
   }
+
+  deleteTask(taskId: any) {
+    console.log(taskId)
+  }
+  
+
 
 }

@@ -38,7 +38,7 @@ export class TasksPageComponent implements OnInit {
 
     this.membersService.getMembers().subscribe(result => {
       const { members } = result
-      console.log(members)
+      //console.log(members)
       this.members = members;
     
     }, err => {
@@ -48,7 +48,7 @@ export class TasksPageComponent implements OnInit {
     this.tasksService.getTasks().subscribe(result => {
       const { tasks } = result;
       this.tasks = tasks;
-      console.log(tasks)
+     // console.log(tasks)
     })
   
   
@@ -66,7 +66,6 @@ export class TasksPageComponent implements OnInit {
     }
     
     this.tasksService.addTask(newTask).subscribe( result => {
-      console.log(result)
       if (result) {
         this.tasksService.getTasks().subscribe(result => {
           const { tasks } = result;
